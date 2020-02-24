@@ -1,0 +1,5 @@
+package crawer
+
+func getValidResponse() {
+
+}

@@ -35,7 +35,10 @@ const (
 func Crawl(ctx context.Context, urls []string) []interface{} {
 	// init http client
 	// TODO: review roundtrip and setup default headers and query params
-	client := &http.Client{}
+	client := &http.Client{
+		// setup a 10 seconds timeout
+		Timeout: 10 * time.Second,
+	}
 	// async send
 	// init contexts with cancel
 	// context value type alredy set
@@ -60,7 +63,7 @@ func Crawl(ctx context.Context, urls []string) []interface{} {
 	// listen to results
 	for {
 		select {
-		case r := <- resultChan:
+		case r := <-resultChan:
 			resultSlice = append(resultSlice, r)
 			// check for desired length
 			if len(resultSlice) == len(urls) {
@@ -69,7 +72,7 @@ func Crawl(ctx context.Context, urls []string) []interface{} {
 				return resultSlice
 			}
 		// also consider canceled context
-		case <- ctx.Done():
+		case <-ctx.Done():
 			crawlerCancel()
 			return resultSlice
 		}

@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"time"
 
@@ -21,10 +22,61 @@ type values struct {
 type responseHandler func(io.Reader) (interface{}, error)
 
 var (
-	ServerError = errors.New("Server error")
+	// ErrorServer defines server error
+	ErrorServer = errors.New("Server error")
 )
 
-func trySend(ctx context.Context, limiter *rate.Limiter, client http.Client, request *http.Request, responseChan chan *http.Response) (err error) {
+const (
+	rateLimit = 5
+)
+
+// Crawl function crawls target urls asynchronously with rate limits
+// and returns a slice
+func Crawl(ctx context.Context, urls []string) []interface{} {
+	// init http client
+	// TODO: review roundtrip and setup default headers and query params
+	client := &http.Client{}
+	// async send
+	// init contexts with cancel
+	// context value type alredy set
+	crawlerCtx, crawlerCancel := context.WithCancel(ctx)
+	// init rate limiter
+	limiter := rate.NewLimiter(rate.Limit(rateLimit), rateLimit)
+	// run response listener at background
+	responseChan := make(chan *http.Response)
+	resultChan := make(chan interface{})
+	go listenResponse(crawlerCtx, responseChan, resultChan)
+	for _, url := range urls {
+		// send async requests
+		// macke requests
+		req, err := http.NewRequest("GET", url, nil)
+		if err != nil {
+			log.Fatal(err)
+		}
+		// try to get valid response
+		go trySend(crawlerCtx, limiter, client, req, responseChan)
+	}
+	resultSlice := []interface{}{}
+	// listen to results
+	for {
+		select {
+		case r := <- resultChan:
+			resultSlice = append(resultSlice, r)
+			// check for desired length
+			if len(resultSlice) == len(urls) {
+				// cancel crawler context to stop response listener
+				crawlerCancel()
+				return resultSlice
+			}
+		// also consider canceled context
+		case <- ctx.Done():
+			crawlerCancel()
+			return resultSlice
+		}
+	}
+}
+
+func trySend(ctx context.Context, limiter *rate.Limiter, client *http.Client, request *http.Request, responseChan chan *http.Response) (err error) {
 	// send the request using client
 	// install rate limiter
 	limiter.Wait(ctx)
@@ -44,7 +96,7 @@ func trySend(ctx context.Context, limiter *rate.Limiter, client http.Client, req
 	} else {
 		// server error
 		// TODO: add this failed record to database
-		err = ServerError
+		err = ErrorServer
 	}
 	return
 }
@@ -81,20 +133,3 @@ func listenResponse(ctx context.Context, responseChan chan *http.Response, resul
 	}
 }
 
-func listenDecodedResponse(ctx context.Context, resultChan chan interface{}, target []interface{}, wantLen int) {
-	for {
-		select {
-		case r := <-resultChan:
-			// append result to target
-			target = append(target, r)
-			// check for result length
-			if len(target) == wantLen {
-				// all desired result appended
-				return
-			}
-			// TODO: logging
-		case <-ctx.Done():
-			return
-		}
-	}
-}

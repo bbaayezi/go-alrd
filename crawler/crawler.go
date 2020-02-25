@@ -4,21 +4,33 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"go-alrd/util"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"time"
 
 	"golang.org/x/time/rate"
+	// only used for testing
 )
 
 type ContextKey string
 
 // ContextValues defines context value
 type ContextValues struct {
-	resHandlerFunc responseHandler
+	ResHandlerFunc ResponseHandler
 }
 
 type HTTPQuery map[string]string
+
+func (hq HTTPQuery) Concat(new map[string]string) {
+	if hq == nil {
+		hq = map[string]string{}
+	}
+	for k, v := range new {
+		hq[k] = v
+	}
+}
 
 var (
 	// ErrorServer defines server error
@@ -31,7 +43,8 @@ const (
 )
 
 // Crawl function crawls target urls asynchronously with rate limits
-// and returns a slice
+// and returns a slice;
+// context must specify "meta" context key which includes response handler functions
 func Crawl(ctx context.Context, client *http.Client, urls []string) []interface{} {
 	// init http client
 	// TODO: review roundtrip and setup default headers and query params
@@ -110,7 +123,7 @@ func listenResponse(ctx context.Context, responseChan chan *http.Response, resul
 			// get the handler func from context
 			// TODO: change contextKey
 			// NOTE: changed to metaKey
-			handler := ctx.Value(metaKey).(ContextValues).resHandlerFunc
+			handler := ctx.Value(metaKey).(ContextValues).ResHandlerFunc
 			// execute handler func on response
 			result, err := handler(r.Body)
 			// check for error
@@ -135,7 +148,7 @@ func listenResponse(ctx context.Context, responseChan chan *http.Response, resul
 	}
 }
 
-func addQueryToReq(req *http.Request, query HTTPQuery) (newURL string) {
+func AddQueryToReq(req *http.Request, query HTTPQuery) (newURL string) {
 	// get query
 	q := req.URL.Query()
 	// add query
@@ -148,4 +161,9 @@ func addQueryToReq(req *http.Request, query HTTPQuery) (newURL string) {
 	// return thr url
 	newURL = req.URL.String()
 	return
+}
+
+func WriteToFile(data interface{}, name string) {
+	output, _ := util.JSONUnescapedMarshal(data, "", "  ")
+	ioutil.WriteFile(name+".json", output, 0644)
 }

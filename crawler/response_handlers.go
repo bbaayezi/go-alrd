@@ -8,7 +8,7 @@ import (
 
 // This file defines response handlers
 
-type responseHandler func(io.Reader) (interface{}, error)
+type ResponseHandler func(io.Reader) (interface{}, error)
 
 func DefaultHandler(body io.Reader) (interface{}, error) {
 	return ioutil.ReadAll(body)

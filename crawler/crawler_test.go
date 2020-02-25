@@ -13,7 +13,7 @@ func TestCrawl(t *testing.T) {
 		"http://www.mocky.io/v2/5e5441652e0000d8ec2db27f",
 	}
 	ctx := context.WithValue(context.Background(), metaKey, ContextValues{
-		resHandlerFunc: JSONDecodeHandler,
+		ResHandlerFunc: JSONDecodeHandler,
 	})
 	client := &http.Client{
 		Timeout: 5 * time.Second,

@@ -1,10 +1,9 @@
-package crawer
+package crawler
 
 import (
 	"context"
 	"errors"
 	"fmt"
-	"io"
 	"log"
 	"net/http"
 	"time"
@@ -12,18 +11,19 @@ import (
 	"golang.org/x/time/rate"
 )
 
-type contextKey string
+type ContextKey string
 
-// values struct defines context value
-type values struct {
+// ContextValues defines context value
+type ContextValues struct {
 	resHandlerFunc responseHandler
 }
 
-type responseHandler func(io.Reader) (interface{}, error)
+type HTTPQuery map[string]string
 
 var (
 	// ErrorServer defines server error
 	ErrorServer = errors.New("Server error")
+	metaKey     = ContextKey("meta")
 )
 
 const (
@@ -32,13 +32,10 @@ const (
 
 // Crawl function crawls target urls asynchronously with rate limits
 // and returns a slice
-func Crawl(ctx context.Context, urls []string) []interface{} {
+func Crawl(ctx context.Context, client *http.Client, urls []string) []interface{} {
 	// init http client
 	// TODO: review roundtrip and setup default headers and query params
-	client := &http.Client{
-		// setup a 10 seconds timeout
-		Timeout: 10 * time.Second,
-	}
+
 	// async send
 	// init contexts with cancel
 	// context value type alredy set
@@ -54,6 +51,7 @@ func Crawl(ctx context.Context, urls []string) []interface{} {
 		// macke requests
 		req, err := http.NewRequest("GET", url, nil)
 		if err != nil {
+			// TODO: add a better error handler
 			log.Fatal(err)
 		}
 		// try to get valid response
@@ -90,10 +88,10 @@ func trySend(ctx context.Context, limiter *rate.Limiter, client *http.Client, re
 	}
 	// check if the return status code is 200 (OK)
 	statusCode := res.StatusCode
-	if statusCode == 200 {
+	if statusCode == http.StatusOK {
 		// send the valid response to response channel
 		responseChan <- res
-	} else if statusCode == 429 {
+	} else if statusCode == http.StatusTooManyRequests {
 		// sending too much requests, retry
 		trySend(ctx, limiter, client, request, responseChan)
 	} else {
@@ -111,7 +109,8 @@ func listenResponse(ctx context.Context, responseChan chan *http.Response, resul
 		case r := <-responseChan:
 			// get the handler func from context
 			// TODO: change contextKey
-			handler := ctx.Value(contextKey("key")).(values).resHandlerFunc
+			// NOTE: changed to metaKey
+			handler := ctx.Value(metaKey).(ContextValues).resHandlerFunc
 			// execute handler func on response
 			result, err := handler(r.Body)
 			// check for error
@@ -136,3 +135,17 @@ func listenResponse(ctx context.Context, responseChan chan *http.Response, resul
 	}
 }
 
+func addQueryToReq(req *http.Request, query HTTPQuery) (newURL string) {
+	// get query
+	q := req.URL.Query()
+	// add query
+	// iterate through query map
+	for k, v := range query {
+		q.Set(k, v)
+	}
+	// encode
+	req.URL.RawQuery = q.Encode()
+	// return thr url
+	newURL = req.URL.String()
+	return
+}

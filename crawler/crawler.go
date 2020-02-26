@@ -4,8 +4,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"go-alrd/util"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"time"
@@ -129,6 +127,7 @@ func listenResponse(ctx context.Context, responseChan chan *http.Response, resul
 			// check for error
 			if err != nil {
 				// send nil to result channel
+				fmt.Println("Error occured while encoding: ", err)
 				resultChan <- nil
 				// TODO: add logging
 				// break current select
@@ -161,9 +160,4 @@ func AddQueryToReq(req *http.Request, query HTTPQuery) (newURL string) {
 	// return thr url
 	newURL = req.URL.String()
 	return
-}
-
-func WriteToFile(data interface{}, name string) {
-	output, _ := util.JSONUnescapedMarshal(data, "", "  ")
-	ioutil.WriteFile(name+".json", output, 0644)
 }

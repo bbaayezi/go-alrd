@@ -7,7 +7,7 @@ import (
 
 // SearchResult represents search result structure
 type SearchResult struct {
-	ID         int           `gorm:"AUTO_INCREMENT;PRIMARY_KEY;column:id"`
+	ID         sql.NullInt64 `gorm:"AUTO_INCREMENT;PRIMARY_KEY;column:id"`
 	Type       string        `gorm:"column:type"`
 	StatusCode sql.NullInt64 `gorm:"column:status_code"`
 	URL        string        `gorm:"column:url"`
@@ -27,4 +27,15 @@ type ScopusRecord struct {
 
 func (ScopusRecord) TableName() string {
 	return "t_scopus_search_record"
+}
+
+type AbstractRetrieve struct {
+	ID         sql.NullInt64 `gorm:"PRIMARY_KEY;column:id"`
+	Scopus_ID  string        `gorm:"column:scopus_id"`
+	URL        string        `gorm:"column:url"`
+	StatusCode sql.NullInt64 `gorm:"column:status_code;default:0"`
+}
+
+func (AbstractRetrieve) TableName() string {
+	return "t_abstract_retrieve"
 }

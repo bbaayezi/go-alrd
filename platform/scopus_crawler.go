@@ -18,7 +18,7 @@ var (
 
 	baseQuery = c.HTTPQuery{
 		"query":      secret.SearchString,
-		"field":      "affiliation,citedby-count",
+		"field":      "affiliation,citedby-count,dc:identifier",
 		"httpAccpet": "application/json",
 	}
 
@@ -36,6 +36,7 @@ var (
 
 // CrawlScopusAPI will crawl scopus api synchronously with 25 results
 func CrawlScopusAPI(ctx context.Context, startIndex int) (t.ScopusResponse, error) {
+	result := t.ScopusResponse{}
 	// setup client
 	client := &http.Client{
 		Timeout:   10 * time.Second,
@@ -48,25 +49,24 @@ func CrawlScopusAPI(ctx context.Context, startIndex int) (t.ScopusResponse, erro
 	url := secret.BaseURL + secret.APIScopus
 	baseReq, err := http.NewRequest("GET", url, nil)
 	if err != nil {
-		return nil, err
+		return result, err
 	}
 	q := map[string]string{
 		"start": strconv.Itoa(startIndex),
-		"count": "10",
 	}
 	baseQuery.Concat(q)
 	firstURL := c.AddQueryToReq(baseReq, baseQuery)
 	// get the result
 	responses := c.Crawl(scopusCtx, client, []string{firstURL})
-
 	// check nil
-	if responses[0] == nil {
-		if result, ok := responses[0].(t.ScopusResponse); ok {
-			return result, nil
+	if responses[0] != nil {
+		if encodedResult, ok := responses[0].(t.ScopusResponse); ok {
+			result = encodedResult
 		}
 	} else {
-		return nil, ErrorDecode
+		return result, ErrorDecode
 	}
+	return result, nil
 	// test: write to file
 	// firstScopusRes := responses[0].(t.ScopusResponse)
 	// totalPapers := firstScopusRes.Results.TotalPapers

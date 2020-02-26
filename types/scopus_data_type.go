@@ -26,6 +26,7 @@ type ScopusEntryEntity struct {
 	AbstractURL  string              `json:"prism:url"`
 	CitedByCount json.Number         `json:"citedby-count,string"`
 	Affiliations []AffiliationEntity `json:"affiliation"`
+	Identifier   string              `json:"dc:identifier"`
 }
 
 type AffiliationEntity struct {

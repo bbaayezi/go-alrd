@@ -39,8 +39,10 @@ func run() {
 		// TODO: add a better error handler
 		log.Fatal(err)
 	}
+	var scopusRecord sqlutil.ScopusRecord
+	db.First(&scopusRecord)
 
-	// send one request to get total papers
+	// send one request to get meta data
 	peekRes, err := platform.CrawlScopusAPI(mainCtx, 0)
 	if err != nil {
 		// TODO: add a better error handler
@@ -48,7 +50,7 @@ func run() {
 	}
 	totalPapers, _ := peekRes.Results.TotalPapers.Int64()
 	// Test
-	totalPapers = 50
+	totalPapers = 100
 	// recordStartIndex := int(totalPapers-scopusRecord.StartIndex.Int64)
 	recordEndIndex := int(scopusRecord.EndIndex.Int64)
 	// compare total papers with end index
@@ -61,6 +63,7 @@ func run() {
 		} else if mod > 0 {
 			targetScopusSearchTimes = int((totalPapers-scopusRecord.EndIndex.Int64)/itemPerPage) + 1
 		}
+		// update scopus search
 		for i := 0; i < targetScopusSearchTimes; i++ {
 			// start scopus search with end index
 			res, err := platform.CrawlScopusAPI(mainCtx, recordEndIndex)
@@ -107,7 +110,7 @@ func run() {
 			}
 
 			// update end index
-			recordEndIndex += itemPerPage
+			recordEndIndex += len(res.Results.Entry)
 			// update scopus record
 			updateScopusRecord := sqlutil.ScopusRecord{
 				EndIndex: sql.NullInt64{
@@ -120,6 +123,7 @@ func run() {
 			// update in database
 			db.Model(&sqlutil.ScopusRecord{}).Updates(updateScopusRecord)
 		}
+		// TODO: check search result table and update abstract retrieve
 	} else {
 		fmt.Println("---- All data is up to date, wait for next round")
 	}

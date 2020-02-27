@@ -53,6 +53,7 @@ type AbstractData struct {
 	SubjectArea  pq.StringArray `gorm:"subject_area,type:varchar(400)[]"`
 	Publisher    string         `gorm:"publisher"`
 	Language     string         `gorm:"language"`
+	Country      pq.StringArray `gorm:"country",type:varchar(200)[]`
 	CreatedAt    time.Time      `gorm:"created_at"`
 	UpdatedAt    time.Time      `gorm:"updated_at"`
 }

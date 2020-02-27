@@ -8,6 +8,7 @@ import (
 	"go-alrd/platform"
 	"go-alrd/secret"
 	sqlutil "go-alrd/sql"
+	"go-alrd/util"
 	"net/http"
 	"time"
 
@@ -24,7 +25,7 @@ var (
 )
 
 func main() {
-	// updateScopusData()
+	// updateAbstract()
 	checkForUpdate()
 }
 
@@ -198,6 +199,24 @@ func updateAbstract() bool {
 	for _, res := range abstractResponses {
 		authorNameArr := []string{}
 		subjectAreas := []string{}
+		// setup country
+		countryArr := []string{}
+		// check nil
+		if res.Results.Affiliation != nil {
+			if afil, ok := res.Results.Affiliation.([]interface{}); !ok {
+				// not an array
+				country := res.Results.Affiliation.(map[string]interface{})["affiliation-country"]
+				countryArr = append(countryArr, country.(string))
+			} else {
+				// is an array, can be duplicate
+				for _, af := range afil {
+					country := af.(map[string]interface{})["affiliation-country"]
+					countryArr = append(countryArr, country.(string))
+				}
+			}
+			// remove duplicate
+			countryArr = util.RemoveDuplicates(countryArr)
+		}
 		// construct cited by count
 		citedbyCount, err := res.Results.Coredata.CitedbyCount.Int64()
 		if err != nil {
@@ -230,6 +249,7 @@ func updateAbstract() bool {
 			SubjectArea: subjectAreas,
 			Publisher:   res.Results.Coredata.Publisher,
 			Language:    res.Results.Language.Value,
+			Country:     countryArr,
 			CreatedAt:   time.Now(),
 			UpdatedAt:   time.Now(),
 		}

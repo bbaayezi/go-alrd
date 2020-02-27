@@ -12,6 +12,7 @@ type AbstractResponse struct {
 }
 
 type AbstractResult struct {
+	Affiliation  interface{}       `json:"affiliation"` // can be an array or object
 	Coredata     AbstractCore      `json:"coredata"`
 	Language     LanguageEntity    `json:"language"`
 	SubjectAreas SubjectAreaEntity `json:"subject-areas"`
@@ -64,7 +65,7 @@ type AuthorEntity struct {
 	Initials      string              `json:"ce:initials"`
 	PreferredName AuthorPreferredName `json:"preferred-name"`
 	IsFirstAuthor json.Number         `json:"@seq,string"`
-	Affiliation   interface{}         `json:"affiliation"` // can be an object or an array
+	// Affiliation   interface{}         `json:"affiliation"` // can be an object or an array
 }
 
 type AuthorPreferredName struct {

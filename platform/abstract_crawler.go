@@ -6,7 +6,6 @@ import (
 	"fmt"
 	c "go-alrd/crawler"
 	t "go-alrd/types"
-	"go-alrd/util"
 	"io"
 	"net/http"
 	"time"
@@ -68,7 +67,7 @@ func CrawlAbstracts(ctx context.Context, urls []string) []t.AbstractResponse {
 		}
 	}
 	// test
-	util.WriteToJSONFile(abstractResponses, "abstractData")
+	// util.WriteToJSONFile(abstractResponses, "abstractData")
 	return abstractResponses
 	// return abstractResponses, nil
 }

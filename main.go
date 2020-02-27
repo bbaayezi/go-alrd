@@ -211,7 +211,10 @@ func updateAbstract() bool {
 				// is an array, can be duplicate
 				for _, af := range afil {
 					country := af.(map[string]interface{})["affiliation-country"]
-					countryArr = append(countryArr, country.(string))
+					// check nil
+					if country != nil {
+						countryArr = append(countryArr, country.(string))
+					}
 				}
 			}
 			// remove duplicate

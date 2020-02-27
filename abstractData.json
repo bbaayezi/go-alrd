@@ -1,0 +1,1657 @@
+[
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Case studies with Process Analysis Toolkit (PAT)",
+        "citedby-count": 4,
+        "prism:coverDate": "2009-12-01",
+        "prism:aggregationType": "Conference Proceeding",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "",
+              "ce:surname": "Man",
+              "ce:initials": "K.L.",
+              "preferred-name": {
+                "ce:given-name": "K. L.",
+                "ce:surname": "Man",
+                "ce:initials": "K.L.",
+                "ce:indexed-name": "Man K."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60102426",
+                "@id": "60102426"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:77951477564",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Electrical and Electronic Engineering",
+            "@abbrev": "ENGI"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Solution framework for open communication with Self-Modifying Protocols",
+        "citedby-count": 0,
+        "prism:coverDate": "2007-01-01",
+        "prism:aggregationType": "Journal",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Sheng-Uei",
+              "ce:surname": "Guan",
+              "ce:initials": "S.-U.",
+              "preferred-name": {
+                "ce:given-name": "Sheng Uei",
+                "ce:surname": "Guan",
+                "ce:initials": "S.U.",
+                "ce:indexed-name": "Guan S."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60102426",
+                "@id": "60102426"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:84946383856",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Control and Systems Engineering",
+            "@abbrev": "ENGI"
+          },
+          {
+            "$": "Computer Science Applications",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Information Systems and Management",
+            "@abbrev": "DECI"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Single development project",
+        "citedby-count": 4,
+        "prism:coverDate": "2009-04-01",
+        "prism:aggregationType": "Journal",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Nenad",
+              "ce:surname": "Stankovic",
+              "ce:initials": "N.",
+              "preferred-name": {
+                "ce:given-name": "Nenad",
+                "ce:surname": "Stankovic",
+                "ce:initials": "N.",
+                "ce:indexed-name": "Stankovic N."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60102426",
+                "@id": "60102426"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:62849120698",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Software",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Information Systems",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Hardware and Architecture",
+            "@abbrev": "COMP"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Gait classification in children with cerebral palsy by Bayesian approach",
+        "citedby-count": 28,
+        "prism:coverDate": "2009-04-01",
+        "prism:aggregationType": "Journal",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Bai-ling",
+              "ce:surname": "Zhang",
+              "ce:initials": "B.-l.",
+              "preferred-name": {
+                "ce:given-name": "Bai ling",
+                "ce:surname": "Zhang",
+                "ce:initials": "B.l.",
+                "ce:indexed-name": "Zhang B."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60102426",
+                "@id": "60102426"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:57149097249",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Software",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Signal Processing",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Computer Vision and Pattern Recognition",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Artificial Intelligence",
+            "@abbrev": "COMP"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "On the activation and passivation of precursors for process-induced positive charges in Hf-dielectric stacks",
+        "citedby-count": 3,
+        "prism:coverDate": "2009-03-24",
+        "prism:aggregationType": "Journal",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "",
+              "ce:surname": "Chang",
+              "ce:initials": "M.H.",
+              "preferred-name": {
+                "ce:given-name": "M. H.",
+                "ce:surname": "Chang",
+                "ce:initials": "M.H.",
+                "ce:indexed-name": "Chang M."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60028355",
+                "@id": "60028355"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:62549085630",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Physics and Astronomy (all)",
+            "@abbrev": "PHYS"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Monitoring of particle swarm optimization",
+        "citedby-count": 50,
+        "prism:coverDate": "2009-03-01",
+        "prism:aggregationType": "Journal",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Yuhui",
+              "ce:surname": "Shi",
+              "ce:initials": "Y.",
+              "preferred-name": {
+                "ce:given-name": "Yuhui",
+                "ce:surname": "Shi",
+                "ce:initials": "Y.",
+                "ce:indexed-name": "Shi Y."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60102426",
+                "@id": "60102426"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:62349142299",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Theoretical Computer Science",
+            "@abbrev": "MATH"
+          },
+          {
+            "$": "Computer Science (all)",
+            "@abbrev": "COMP"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Dielectric relaxation of lanthanum doped zirconium oxide",
+        "citedby-count": 30,
+        "prism:coverDate": "2009-03-09",
+        "prism:aggregationType": "Journal",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "",
+              "ce:surname": "Zhao",
+              "ce:initials": "C.Z.",
+              "preferred-name": {
+                "ce:given-name": "C. Z.",
+                "ce:surname": "Zhao",
+                "ce:initials": "C.Z.",
+                "ce:indexed-name": "Zhao C."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60020661",
+                "@id": "60020661"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:61449233200",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Physics and Astronomy (all)",
+            "@abbrev": "PHYS"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "An integrated crystal plasticity fe system for microforming simulation",
+        "citedby-count": 26,
+        "prism:coverDate": "2009-01-01",
+        "prism:aggregationType": "Journal",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "",
+              "ce:surname": "Cao",
+              "ce:initials": "J.",
+              "preferred-name": {
+                "ce:given-name": "J.",
+                "ce:surname": "Cao",
+                "ce:initials": "J.",
+                "ce:indexed-name": "Cao J."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60019702",
+                "@id": "60019702"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:68949124811",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Modeling and Simulation",
+            "@abbrev": "MATH"
+          },
+          {
+            "$": "Computer Science Applications",
+            "@abbrev": "COMP"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Anode boundary layer of an atmospheric free burning argon arc",
+        "citedby-count": 1,
+        "prism:coverDate": "2008-12-01",
+        "prism:aggregationType": "Conference Proceeding",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "",
+              "ce:surname": "Liau",
+              "ce:initials": "V.K.",
+              "preferred-name": {
+                "ce:given-name": "V. K.",
+                "ce:surname": "Liau",
+                "ce:initials": "V.K.",
+                "ce:indexed-name": "Liau V."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60102426",
+                "@id": "60102426"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:70349140008",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Geochemistry and Petrology",
+            "@abbrev": "EART"
+          },
+          {
+            "$": "Geotechnical Engineering and Engineering Geology",
+            "@abbrev": "EART"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "TADL - An architecture description language for trustworthy component-based systems",
+        "citedby-count": 15,
+        "prism:coverDate": "2008-11-28",
+        "prism:aggregationType": "Book Series",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Mubarak",
+              "ce:surname": "Mohammad",
+              "ce:initials": "M.",
+              "preferred-name": {
+                "ce:given-name": "Mubarak",
+                "ce:surname": "Mohammad",
+                "ce:initials": "M.",
+                "ce:indexed-name": "Mohammad M."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60033154",
+                "@id": "60033154"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:56649103542",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Theoretical Computer Science",
+            "@abbrev": "MATH"
+          },
+          {
+            "$": "Computer Science (all)",
+            "@abbrev": "COMP"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "An image indexing and searching system based both on keyword and content",
+        "citedby-count": 2,
+        "prism:coverDate": "2008-11-27",
+        "prism:aggregationType": "Book Series",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Nan",
+              "ce:surname": "Zhang",
+              "ce:initials": "N.",
+              "preferred-name": {
+                "ce:given-name": "Nan",
+                "ce:surname": "Zhang",
+                "ce:initials": "N.",
+                "ce:indexed-name": "Zhang N."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60102426",
+                "@id": "60102426"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:56549098837",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Theoretical Computer Science",
+            "@abbrev": "MATH"
+          },
+          {
+            "$": "Computer Science (all)",
+            "@abbrev": "COMP"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Population diversity of particle swarms",
+        "citedby-count": 61,
+        "prism:coverDate": "2008-11-14",
+        "prism:aggregationType": "Conference Proceeding",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Yuhui",
+              "ce:surname": "Shi",
+              "ce:initials": "Y.",
+              "preferred-name": {
+                "ce:given-name": "Yuhui",
+                "ce:surname": "Shi",
+                "ce:initials": "Y.",
+                "ce:indexed-name": "Shi Y."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60102426",
+                "@id": "60102426"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:55749113518",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Computational Theory and Mathematics",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Theoretical Computer Science",
+            "@abbrev": "MATH"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Mathematical modelling and performance evaluation of a stand-alone polycrystalline PV plant with MPPT facility",
+        "citedby-count": 52,
+        "prism:coverDate": "2008-09-29",
+        "prism:aggregationType": "Conference Proceeding",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "",
+              "ce:surname": "Chowdhury",
+              "ce:initials": "S.",
+              "preferred-name": {
+                "ce:given-name": "S.",
+                "ce:surname": "Chowdhury",
+                "ce:initials": "S.",
+                "ce:indexed-name": "Chowdhury S."
+              },
+              "@seq": 1,
+              "affiliation": [
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/100405523",
+                  "@id": "100405523"
+                },
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60000251",
+                  "@id": "60000251"
+                }
+              ]
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:52349087886",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Energy Engineering and Power Technology",
+            "@abbrev": "ENER"
+          },
+          {
+            "$": "Electrical and Electronic Engineering",
+            "@abbrev": "ENGI"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Supervisory data acquisition and performance analysis of a PV Array installation with data logger",
+        "citedby-count": 8,
+        "prism:coverDate": "2008-09-29",
+        "prism:aggregationType": "Conference Proceeding",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "",
+              "ce:surname": "Chowdhury",
+              "ce:initials": "S.",
+              "preferred-name": {
+                "ce:given-name": "S.",
+                "ce:surname": "Chowdhury",
+                "ce:initials": "S.",
+                "ce:indexed-name": "Chowdhury S."
+              },
+              "@seq": 1,
+              "affiliation": [
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/100405523",
+                  "@id": "100405523"
+                },
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60000251",
+                  "@id": "60000251"
+                }
+              ]
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:52349099562",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Energy Engineering and Power Technology",
+            "@abbrev": "ENER"
+          },
+          {
+            "$": "Electrical and Electronic Engineering",
+            "@abbrev": "ENGI"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Available transfer capability assessment considering economic constraint",
+        "citedby-count": 0,
+        "prism:coverDate": "2008-08-22",
+        "prism:aggregationType": "Conference Proceeding",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Chang-Hua",
+              "ce:surname": "Zhang",
+              "ce:initials": "C.-H.",
+              "preferred-name": {
+                "ce:given-name": "Chang Hua",
+                "ce:surname": "Zhang",
+                "ce:initials": "C.H.",
+                "ce:indexed-name": "Zhang C."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60005465",
+                "@id": "60005465"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:49649116354",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Energy Engineering and Power Technology",
+            "@abbrev": "ENER"
+          },
+          {
+            "$": "Law",
+            "@abbrev": "SOCI"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Capacity benefit margin assessment based on multi-area generation reliability exponential analytic model",
+        "citedby-count": 11,
+        "prism:coverDate": "2008-06-02",
+        "prism:aggregationType": "Journal",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "",
+              "ce:surname": "Sun",
+              "ce:initials": "R.-F.",
+              "preferred-name": {
+                "ce:given-name": "R. F.",
+                "ce:surname": "Sun",
+                "ce:initials": "R.F.",
+                "ce:indexed-name": "Sun R."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60025278",
+                "@id": "60025278"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:44349176059",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Control and Systems Engineering",
+            "@abbrev": "ENGI"
+          },
+          {
+            "$": "Energy Engineering and Power Technology",
+            "@abbrev": "ENER"
+          },
+          {
+            "$": "Electrical and Electronic Engineering",
+            "@abbrev": "ENGI"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Real-time modeling of 3-D soccer ball trajectories from multiple fixed cameras",
+        "citedby-count": 38,
+        "prism:coverDate": "2008-03-01",
+        "prism:aggregationType": "Journal",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Jinchang",
+              "ce:surname": "Ren",
+              "ce:initials": "J.",
+              "preferred-name": {
+                "ce:given-name": "Jinchang",
+                "ce:surname": "Ren",
+                "ce:initials": "J.",
+                "ce:indexed-name": "Ren J."
+              },
+              "@seq": 1,
+              "affiliation": [
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60000251",
+                  "@id": "60000251"
+                },
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60008524",
+                  "@id": "60008524"
+                },
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60003977",
+                  "@id": "60003977"
+                }
+              ]
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:41649097630",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Media Technology",
+            "@abbrev": "ENGI"
+          },
+          {
+            "$": "Electrical and Electronic Engineering",
+            "@abbrev": "ENGI"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Available transfer capability assessment considering generation bidding and costumer inclination",
+        "citedby-count": 5,
+        "prism:coverDate": "2007-12-10",
+        "prism:aggregationType": "Journal",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Changhua",
+              "ce:surname": "Zhang",
+              "ce:initials": "C.",
+              "preferred-name": {
+                "ce:given-name": "Changhua",
+                "ce:surname": "Zhang",
+                "ce:initials": "C.",
+                "ce:indexed-name": "Zhang C."
+              },
+              "@seq": 1,
+              "affiliation": [
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60018486",
+                  "@id": "60018486"
+                },
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60027363",
+                  "@id": "60027363"
+                }
+              ]
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:37749034665",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Control and Systems Engineering",
+            "@abbrev": "ENGI"
+          },
+          {
+            "$": "Energy Engineering and Power Technology",
+            "@abbrev": "ENER"
+          },
+          {
+            "$": "Computer Science Applications",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Electrical and Electronic Engineering",
+            "@abbrev": "ENGI"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Computing parallel speeded-up robust features (P-SURF) via POSIX threads",
+        "citedby-count": 13,
+        "prism:coverDate": "2009-11-11",
+        "prism:aggregationType": "Book Series",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Nan",
+              "ce:surname": "Zhang",
+              "ce:initials": "N.",
+              "preferred-name": {
+                "ce:given-name": "Nan",
+                "ce:surname": "Zhang",
+                "ce:initials": "N.",
+                "ce:indexed-name": "Zhang N."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60102426",
+                "@id": "60102426"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:70350778331",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Theoretical Computer Science",
+            "@abbrev": "MATH"
+          },
+          {
+            "$": "Computer Science (all)",
+            "@abbrev": "COMP"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Computer-supported collaboration in language learning",
+        "citedby-count": 3,
+        "prism:coverDate": "2009-12-01",
+        "prism:aggregationType": "Book",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Bin",
+              "ce:surname": "Zou",
+              "ce:initials": "B.",
+              "preferred-name": {
+                "ce:given-name": "Bin",
+                "ce:surname": "Zou",
+                "ce:initials": "B.",
+                "ce:indexed-name": "Zou B."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60102426",
+                "@id": "60102426"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:84899163697",
+        "dc:publisher": "IGI Global"
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Computer Science (all)",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Social Sciences (all)",
+            "@abbrev": "SOCI"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "MidSens'09 - International Workshop on Middleware Tools, Services and Run-Time Support for Sensor Networks, Co-located with the 10th ACM/IFIP/USENIX International Middleware Conference: Preface",
+        "citedby-count": 0,
+        "prism:coverDate": "2009-12-01",
+        "prism:aggregationType": "Conference Proceeding",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Sam",
+              "ce:surname": "Michiels",
+              "ce:initials": "S.",
+              "preferred-name": {
+                "ce:given-name": "Sam",
+                "ce:surname": "Michiels",
+                "ce:initials": "S.",
+                "ce:indexed-name": "Michiels S."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60025063",
+                "@id": "60025063"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:76749144234",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Computer Networks and Communications",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Hardware and Architecture",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Software",
+            "@abbrev": "COMP"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "DARMA: Adaptable service and resource management for wireless sensor networks",
+        "citedby-count": 5,
+        "prism:coverDate": "2009-12-01",
+        "prism:aggregationType": "Conference Proceeding",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Pedro Javier",
+              "ce:surname": "Del Cid",
+              "ce:initials": "P.J.",
+              "preferred-name": {
+                "ce:given-name": "Pedro Javier",
+                "ce:surname": "Del Cid",
+                "ce:initials": "P.J.",
+                "ce:indexed-name": "Del Cid P."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60025063",
+                "@id": "60025063"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:76749127170",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Computer Networks and Communications",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Hardware and Architecture",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Software",
+            "@abbrev": "COMP"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "A technique for blood detection in wireless capsule endoscopy images",
+        "citedby-count": 29,
+        "prism:coverDate": "2009-12-01",
+        "prism:aggregationType": "Conference Proceeding",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Barbara",
+              "ce:surname": "Penna",
+              "ce:initials": "B.",
+              "preferred-name": {
+                "ce:given-name": "Barbara",
+                "ce:surname": "Penna",
+                "ce:initials": "B.",
+                "ce:indexed-name": "Penna B."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60012162",
+                "@id": "60012162"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:84855945512",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Signal Processing",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Electrical and Electronic Engineering",
+            "@abbrev": "ENGI"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "A context-aware trust model for service-oriented multi-agent systems",
+        "citedby-count": 2,
+        "prism:coverDate": "2009-11-16",
+        "prism:aggregationType": "Book Series",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Kaiyu",
+              "ce:surname": "Wan",
+              "ce:initials": "K.",
+              "preferred-name": {
+                "ce:given-name": "Kaiyu",
+                "ce:surname": "Wan",
+                "ce:initials": "K.",
+                "ce:indexed-name": "Wan K."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60021200",
+                "@id": "60021200"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:71049126575",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Theoretical Computer Science",
+            "@abbrev": "MATH"
+          },
+          {
+            "$": "Computer Science (all)",
+            "@abbrev": "COMP"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "High-k dielectrics' radiation response to X-ray and γ-ray exposure",
+        "citedby-count": 4,
+        "prism:coverDate": "2009-11-16",
+        "prism:aggregationType": "Conference Proceeding",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "",
+              "ce:surname": "Zhao",
+              "ce:initials": "C.Z.",
+              "preferred-name": {
+                "ce:given-name": "C. Z.",
+                "ce:surname": "Zhao",
+                "ce:initials": "C.Z.",
+                "ce:indexed-name": "Zhao C."
+              },
+              "@seq": 1,
+              "affiliation": [
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60102426",
+                  "@id": "60102426"
+                },
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60020661",
+                  "@id": "60020661"
+                }
+              ]
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:71049164250",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Electrical and Electronic Engineering",
+            "@abbrev": "ENGI"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Permittivity enhancement and dielectric relaxation of doped hafnium and zirconium oxide",
+        "citedby-count": 5,
+        "prism:coverDate": "2009-11-16",
+        "prism:aggregationType": "Conference Proceeding",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "",
+              "ce:surname": "Werner",
+              "ce:initials": "M.",
+              "preferred-name": {
+                "ce:given-name": "M.",
+                "ce:surname": "Werner",
+                "ce:initials": "M.",
+                "ce:indexed-name": "Werner M."
+              },
+              "@seq": 1,
+              "affiliation": [
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60020661",
+                  "@id": "60020661"
+                },
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60020661",
+                  "@id": "60020661"
+                }
+              ]
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:71049159606",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Electrical and Electronic Engineering",
+            "@abbrev": "ENGI"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Biophysical characterizations of human mitochondrial transcription factor A and its binding to tumor suppressor p53",
+        "citedby-count": 63,
+        "prism:coverDate": "2009-09-15",
+        "prism:aggregationType": "Journal",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Tuck Seng",
+              "ce:surname": "Wong",
+              "ce:initials": "T.S.",
+              "preferred-name": {
+                "ce:given-name": "Tuck Seng",
+                "ce:surname": "Wong",
+                "ce:initials": "T.S.",
+                "ce:indexed-name": "Wong T."
+              },
+              "@seq": 1,
+              "affiliation": [
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60015879",
+                  "@id": "60015879"
+                },
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60020661",
+                  "@id": "60020661"
+                }
+              ]
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:73349095758",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Genetics",
+            "@abbrev": "BIOC"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Artificial neural network vs. nonlinear regression for gold content estimation in pyrometallurgy",
+        "citedby-count": 16,
+        "prism:coverDate": "2009-09-01",
+        "prism:aggregationType": "Journal",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "David",
+              "ce:surname": "Liu",
+              "ce:initials": "D.",
+              "preferred-name": {
+                "ce:given-name": "David",
+                "ce:surname": "Liu",
+                "ce:initials": "D.",
+                "ce:indexed-name": "Liu D."
+              },
+              "@seq": 1,
+              "affiliation": [
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60102426",
+                  "@id": "60102426"
+                },
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60018308",
+                  "@id": "60018308"
+                }
+              ]
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:67349240727",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Engineering (all)",
+            "@abbrev": "ENGI"
+          },
+          {
+            "$": "Computer Science Applications",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Artificial Intelligence",
+            "@abbrev": "COMP"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Artificial neural networks for optimization of gold-bearing slime smelting",
+        "citedby-count": 4,
+        "prism:coverDate": "2009-11-01",
+        "prism:aggregationType": "Journal",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "David",
+              "ce:surname": "Liu",
+              "ce:initials": "D.",
+              "preferred-name": {
+                "ce:given-name": "David",
+                "ce:surname": "Liu",
+                "ce:initials": "D.",
+                "ce:indexed-name": "Liu D."
+              },
+              "@seq": 1,
+              "affiliation": [
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60102426",
+                  "@id": "60102426"
+                },
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60018308",
+                  "@id": "60018308"
+                }
+              ]
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:67349122273",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Engineering (all)",
+            "@abbrev": "ENGI"
+          },
+          {
+            "$": "Computer Science Applications",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Artificial Intelligence",
+            "@abbrev": "COMP"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "The excessive [3]-index of all graphs",
+        "citedby-count": 9,
+        "prism:coverDate": "2009-10-05",
+        "prism:aggregationType": "Journal",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "David",
+              "ce:surname": "Cariolaro",
+              "ce:initials": "D.",
+              "preferred-name": {
+                "ce:given-name": "David",
+                "ce:surname": "Cariolaro",
+                "ce:initials": "D.",
+                "ce:indexed-name": "Cariolaro D."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60102426",
+                "@id": "60102426"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:70350180927",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Theoretical Computer Science",
+            "@abbrev": "MATH"
+          },
+          {
+            "$": "Geometry and Topology",
+            "@abbrev": "MATH"
+          },
+          {
+            "$": "Discrete Mathematics and Combinatorics",
+            "@abbrev": "MATH"
+          },
+          {
+            "$": "Computational Theory and Mathematics",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Applied Mathematics",
+            "@abbrev": "MATH"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Learning kernel subspace classifier for robust face recognition",
+        "citedby-count": 0,
+        "prism:coverDate": "2009-10-05",
+        "prism:aggregationType": "Journal",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Bailing",
+              "ce:surname": "Zhang",
+              "ce:initials": "B.",
+              "preferred-name": {
+                "ce:given-name": "Bailing",
+                "ce:surname": "Zhang",
+                "ce:initials": "B.",
+                "ce:indexed-name": "Zhang B."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60102426",
+                "@id": "60102426"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:70349515548",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Software",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Theoretical Computer Science",
+            "@abbrev": "MATH"
+          },
+          {
+            "$": "Modeling and Simulation",
+            "@abbrev": "MATH"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "A formal model of business application integration fromWeb services (Position Paper)",
+        "citedby-count": 3,
+        "prism:coverDate": "2009-07-23",
+        "prism:aggregationType": "Book Series",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Kaiyu",
+              "ce:surname": "Wan",
+              "ce:initials": "K.",
+              "preferred-name": {
+                "ce:given-name": "Kaiyu",
+                "ce:surname": "Wan",
+                "ce:initials": "K.",
+                "ce:indexed-name": "Wan K."
+              },
+              "@seq": 1,
+              "affiliation": {
+                "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60021200",
+                "@id": "60021200"
+              }
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:67650706261",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Theoretical Computer Science",
+            "@abbrev": "MATH"
+          },
+          {
+            "$": "Computer Science (all)",
+            "@abbrev": "COMP"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "abstracts-retrieval-response": {
+      "coredata": {
+        "dc:title": "Tracking the soccer ball using multiple fixed cameras",
+        "citedby-count": 47,
+        "prism:coverDate": "2009-05-01",
+        "prism:aggregationType": "Journal",
+        "dc:creator": {
+          "author": [
+            {
+              "ce:given-name": "Jinchang",
+              "ce:surname": "Ren",
+              "ce:initials": "J.",
+              "preferred-name": {
+                "ce:given-name": "Jinchang",
+                "ce:surname": "Ren",
+                "ce:initials": "J.",
+                "ce:indexed-name": "Ren J."
+              },
+              "@seq": 1,
+              "affiliation": [
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60003977",
+                  "@id": "60003977"
+                },
+                {
+                  "@href": "https://api.elsevier.com/content/affiliation/affiliation_id/60008524",
+                  "@id": "60008524"
+                }
+              ]
+            }
+          ]
+        },
+        "dc:identifier": "SCOPUS_ID:63249096803",
+        "dc:publisher": ""
+      },
+      "language": {
+        "@xml:lang": "eng"
+      },
+      "subject-areas": {
+        "subject-area": [
+          {
+            "$": "Software",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Signal Processing",
+            "@abbrev": "COMP"
+          },
+          {
+            "$": "Computer Vision and Pattern Recognition",
+            "@abbrev": "COMP"
+          }
+        ]
+      }
+    }
+  }
+]

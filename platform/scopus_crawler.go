@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 	c "go-alrd/crawler"
 	"go-alrd/secret"
 	t "go-alrd/types"
@@ -16,7 +17,7 @@ import (
 var (
 	metaKey = c.ContextKey("meta")
 
-	baseQuery = c.HTTPQuery{
+	scopusQuery = c.HTTPQuery{
 		"query":      secret.SearchString,
 		"field":      "affiliation,citedby-count,dc:identifier",
 		"httpAccpet": "application/json",
@@ -31,7 +32,7 @@ var (
 		return result, nil
 	}
 
-	ErrorDecode = errors.New("Recieving nil decoding result, please check the log")
+	ErrorNil = errors.New("Recieving nil decoding result")
 )
 
 // CrawlScopusAPI will crawl scopus api synchronously with 25 results
@@ -54,17 +55,32 @@ func CrawlScopusAPI(ctx context.Context, startIndex int) (t.ScopusResponse, erro
 	q := map[string]string{
 		"start": strconv.Itoa(startIndex),
 	}
-	baseQuery.Concat(q)
-	firstURL := c.AddQueryToReq(baseReq, baseQuery)
+	scopusQuery.Concat(q)
+	firstURL := c.AddQueryToReq(baseReq, scopusQuery)
 	// get the result
 	responses := c.Crawl(scopusCtx, client, []string{firstURL})
 	// check nil
 	if responses[0] != nil {
 		if encodedResult, ok := responses[0].(t.ScopusResponse); ok {
 			result = encodedResult
+		} else {
+			// error handling
+			var err error
+			switch responses[0].(type) {
+			case c.ErrorReponseHandler:
+				fmt.Println("---- Error decoding response, skipping")
+				err = &c.ErrorReponseHandler{}
+			case c.ErrorServer:
+				fmt.Println("---- Server Error")
+				err = &c.ErrorServer{}
+			default:
+				fmt.Println("---- Unknown Error, just return nil error")
+				err = ErrorNil
+			}
+			return result, err
 		}
 	} else {
-		return result, ErrorDecode
+		return result, ErrorNil
 	}
 	return result, nil
 	// test: write to file

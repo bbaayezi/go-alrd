@@ -4,10 +4,10 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"go-alrd/crawler"
 	"go-alrd/platform"
 	"go-alrd/secret"
 	sqlutil "go-alrd/sql"
-	"log"
 	"net/http"
 	"time"
 
@@ -24,33 +24,38 @@ var (
 )
 
 func main() {
-	run()
+	// updateScopusData()
+	checkForUpdate()
 }
 
-func run() {
-	mainCtx, mainCancel := context.WithCancel(context.Background())
-	defer mainCancel()
-	fmt.Println("Starting ALRD app...")
+func updateScopusData() {
+	scopusCtx, scopusCancel := context.WithCancel(context.Background())
+	defer scopusCancel()
+	fmt.Println("Checking for latest scopus data...")
 	// config database
 	db, err := gorm.Open("postgres", secret.DBString)
+	if err != nil {
+		// log.Fatal(err)
+		fmt.Println("---- Error connecting database: ", err, ", returning")
+		return
+	}
 	// close the db connection when exit
 	defer db.Close()
-	if err != nil {
-		// TODO: add a better error handler
-		log.Fatal(err)
-	}
 	var scopusRecord sqlutil.ScopusRecord
 	db.First(&scopusRecord)
 
 	// send one request to get meta data
-	peekRes, err := platform.CrawlScopusAPI(mainCtx, 0)
+	peekRes, err := platform.CrawlScopusAPI(scopusCtx, 0)
 	if err != nil {
 		// TODO: add a better error handler
-		log.Fatal(err)
+		//
+		fmt.Println("---- Error peeking, returning")
+		// log.Fatal(err)
+		return
 	}
 	totalPapers, _ := peekRes.Results.TotalPapers.Int64()
 	// Test
-	totalPapers = 100
+	// totalPapers = 100
 	// recordStartIndex := int(totalPapers-scopusRecord.StartIndex.Int64)
 	recordEndIndex := int(scopusRecord.EndIndex.Int64)
 	// compare total papers with end index
@@ -66,9 +71,35 @@ func run() {
 		// update scopus search
 		for i := 0; i < targetScopusSearchTimes; i++ {
 			// start scopus search with end index
-			res, err := platform.CrawlScopusAPI(mainCtx, recordEndIndex)
+			res, err := platform.CrawlScopusAPI(scopusCtx, recordEndIndex)
 			if err != nil {
-				log.Fatal(err)
+				fmt.Println("---- Error occured for current scopus search. Recording result and skip")
+				// skip current iteration
+				// update search result database
+				statusCode := 0
+				switch err.(type) {
+				case *crawler.ErrorServer:
+					statusCode = http.StatusInternalServerError
+				case *crawler.ErrorReponseHandler:
+					statusCode = -1
+				default:
+					statusCode = 0
+				}
+				newResult := sqlutil.SearchResult{
+					ID: sql.NullInt64{
+						Int64: int64(recordEndIndex),
+						Valid: true,
+					},
+					Type: "SCOPUS",
+					StatusCode: sql.NullInt64{
+						Int64: int64(statusCode),
+						Valid: true,
+					},
+					URL: scopusURL,
+				}
+				// add in database
+				db.Create(&newResult)
+				break
 			}
 			// update search result database
 			newResult := sqlutil.SearchResult{
@@ -98,8 +129,8 @@ func run() {
 						Int64: int64(id),
 						Valid: true,
 					},
-					Scopus_ID: scID,
-					URL:       url,
+					ScopusID: scID,
+					URL:      url,
 					StatusCode: sql.NullInt64{
 						Int64: 0,
 						Valid: true,
@@ -125,10 +156,120 @@ func run() {
 		}
 		// TODO: check search result table and update abstract retrieve
 	} else {
-		fmt.Println("---- All data is up to date, wait for next round")
+		fmt.Println("---- All Scopus data is up to date, wait for next round")
 	}
 }
 
-func checkUpdate(totalPapers int64, endIndex int64) {
+// updateAbstract will find 100 records with status code 0 from the db
+// and update abtract data. if no records found, return
+func updateAbstract() bool {
+	abstractCtx, abstractCancel := context.WithCancel(context.Background())
+	defer abstractCancel()
+	fmt.Println("Checking for latest abstract data...")
+	// config database
+	db, err := gorm.Open("postgres", secret.DBString)
+	if err != nil {
+		// log.Fatal(err)
+		fmt.Println("---- Error connecting database: ", err, ", returning")
+		// skip this round
+		return true
+	}
+	// close the db connection when exit
+	defer db.Close()
+	// test db
+	freeAbstractRetrieve := []sqlutil.AbstractRetrieve{}
+	db.Limit(100).Where("status_code = ?", sql.NullInt64{
+		Int64: int64(0),
+		Valid: true,
+	}).Find(&freeAbstractRetrieve)
+	if len(freeAbstractRetrieve) == 0 {
+		fmt.Println("---- No retrievable abstract data. Returning")
+		return true
+	}
+	// fmt.Println(freeAbstractRetrieve)
+	// extract urls
+	urls := []string{}
+	for _, ar := range freeAbstractRetrieve {
+		urls = append(urls, ar.URL)
+	}
+	abstractResponses := platform.CrawlAbstracts(abstractCtx, urls)
+	// update db
+	fmt.Println("---- Updating new abstract data")
+	for _, res := range abstractResponses {
+		authorNameArr := []string{}
+		subjectAreas := []string{}
+		// construct cited by count
+		citedbyCount, err := res.Results.Coredata.CitedbyCount.Int64()
+		if err != nil {
+			fmt.Println(err)
+			citedbyCount = int64(0)
+		}
+		// construct subject area array
+		for _, subject := range res.Results.SubjectAreas.SubjectArea {
+			subjectAreas = append(subjectAreas, subject.Name)
+		}
+		// construct author name array
+		for _, author := range res.Results.Coredata.Creator.Authors {
+			name := author.PreferredName.GivenName + " " + author.PreferredName.SurName
+			authorNameArr = append(authorNameArr, name)
+		}
+		// wash publisher data
+		res.Results.Coredata.WashPublisherInfo()
+		// create new abstract data record
 
+		newAbstractData := sqlutil.AbstractData{
+			ScopusID: res.Results.Coredata.Identifier,
+			Title:    res.Results.Coredata.Title,
+			Author:   authorNameArr, // stores an array of string
+			Date:     res.Results.Coredata.Date,
+			CitedbyCount: sql.NullInt64{
+				Int64: citedbyCount,
+				Valid: true,
+			},
+			ContentType: res.Results.Coredata.ContentType,
+			SubjectArea: subjectAreas,
+			Publisher:   res.Results.Coredata.Publisher,
+			Language:    res.Results.Language.Value,
+			CreatedAt:   time.Now(),
+			UpdatedAt:   time.Now(),
+		}
+		dbErr := db.Create(&newAbstractData).Error
+		statusCode := 0
+		if dbErr == nil {
+			// update abstract retrieve
+			statusCode = http.StatusOK
+		} else {
+			// update status code with -2 to inform db insertion failed
+			fmt.Println("---- DB insertion failed. Please check record in abstract retrieve table with status code -2")
+			statusCode = -2
+		}
+
+		code := sql.NullInt64{
+			Int64: int64(statusCode),
+			Valid: true,
+		}
+		// update abstract retrieve
+		db.Model(&sqlutil.AbstractRetrieve{}).Where("scopus_id = ?", res.Results.Coredata.Identifier).UpdateColumn("status_code", code)
+	}
+	return false
+}
+
+func checkForUpdate() {
+	for {
+		// first check scopus data
+		updateScopusData()
+		// than update abstract data until there is no retrievable record
+		for {
+			if ok := updateAbstract(); !ok {
+				// wait for a sec to start next round of updating
+				fmt.Println("Wait for 10 seconds to start next abstract retrieve round :)")
+				time.Sleep(10 * time.Second)
+			} else {
+				break
+			}
+		}
+		// check for updates every 12 hours
+		fmt.Println("Wait for 12 hours...")
+		time.Sleep(12 * time.Hour)
+	}
 }

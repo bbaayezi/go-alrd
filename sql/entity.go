@@ -44,18 +44,20 @@ func (AbstractRetrieve) TableName() string {
 }
 
 type AbstractData struct {
-	ScopusID     string         `gorm:"scopus_id;PRIMARY_KEY"`
-	Title        string         `gorm:"title"`
-	Author       pq.StringArray `gorm:"author,type:varchar(200)[]"`
-	Date         string         `gorm:"date"`
-	CitedbyCount sql.NullInt64  `gorm:"citedby_count"`
-	ContentType  string         `gorm:"content_type"`
-	SubjectArea  pq.StringArray `gorm:"subject_area,type:varchar(400)[]"`
-	Publisher    string         `gorm:"publisher"`
-	Language     string         `gorm:"language"`
-	Country      pq.StringArray `gorm:"country",type:varchar(200)[]`
-	CreatedAt    time.Time      `gorm:"created_at"`
-	UpdatedAt    time.Time      `gorm:"updated_at"`
+	ScopusID        string         `gorm:"scopus_id;PRIMARY_KEY"`
+	Title           string         `gorm:"title"`
+	Author          pq.StringArray `gorm:"author,type:varchar(200)[]"`
+	Date            string         `gorm:"date"`
+	CitedbyCount    sql.NullInt64  `gorm:"citedby_count"`
+	ContentType     string         `gorm:"content_type"`
+	SubjectArea     pq.StringArray `gorm:"subject_area,type:varchar(400)[]"`
+	Publisher       string         `gorm:"publisher"`
+	Language        string         `gorm:"language"`
+	Country         pq.StringArray `gorm:"country,type:varchar(200)[]"`
+	PublicationName string         `gorm:"publication_name"`
+	AuthorKeyword   pq.StringArray `gorm:"author_keyword,type:varchar(200)[]"`
+	CreatedAt       time.Time      `gorm:"created_at"`
+	UpdatedAt       time.Time      `gorm:"updated_at"`
 }
 
 func (AbstractData) TableName() string {

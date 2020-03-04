@@ -12,10 +12,11 @@ type AbstractResponse struct {
 }
 
 type AbstractResult struct {
-	Affiliation  interface{}       `json:"affiliation"` // can be an array or object
-	Coredata     AbstractCore      `json:"coredata"`
-	Language     LanguageEntity    `json:"language"`
-	SubjectAreas SubjectAreaEntity `json:"subject-areas"`
+	Affiliation  interface{}        `json:"affiliation"` // can be an array or object
+	Coredata     AbstractCore       `json:"coredata"`
+	Language     LanguageEntity     `json:"language"`
+	SubjectAreas SubjectAreaEntity  `json:"subject-areas"`
+	AuthKeywords AuthKeywordsEntity `json:"authkeywords"`
 }
 
 type SubjectAreaEntity struct {
@@ -27,18 +28,23 @@ type Subject struct {
 	Abbreviation string `json:"@abbrev"`
 }
 
+type AuthKeywordsEntity struct {
+	AuthorKeyword interface{} `json:"author-keyword"` // can be an object or an array
+}
+
 type LanguageEntity struct {
 	Value string `json:"@xml:lang"`
 }
 
 type AbstractCore struct {
-	Title        string      `json:"dc:title"`
-	CitedbyCount json.Number `json:"citedby-count,string"`
-	Date         string      `json:"prism:coverDate"`
-	ContentType  string      `json:"prism:aggregationType"`
-	Creator      Creator     `json:"dc:creator"`
-	Identifier   string      `json:"dc:identifier"`
-	Publisher    string      `json:"dc:publisher"`
+	Title           string      `json:"dc:title"`
+	CitedbyCount    json.Number `json:"citedby-count,string"`
+	Date            string      `json:"prism:coverDate"`
+	ContentType     string      `json:"prism:aggregationType"`
+	Creator         Creator     `json:"dc:creator"`
+	Identifier      string      `json:"dc:identifier"`
+	Publisher       string      `json:"dc:publisher"`
+	PublicationName string      `json:"prism:publicationName"`
 }
 
 func (core *AbstractCore) WashPublisherInfo() {

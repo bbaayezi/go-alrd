@@ -2,6 +2,7 @@ package platform
 
 import (
 	"context"
+	"go-alrd/util"
 	"testing"
 )
 
@@ -32,6 +33,8 @@ func TestCrawlAbstracts(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := CrawlAbstracts(tt.args.ctx, tt.args.urls)
+			// write to file
+			util.WriteToJSONFile(got, "testAbstractData")
 			if len(got) != tt.wantLen {
 				t.Errorf("CrawlAbstracts() = %v, wantLen %v", got, tt.wantLen)
 			}

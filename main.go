@@ -201,6 +201,8 @@ func updateAbstract() bool {
 		subjectAreas := []string{}
 		// setup country
 		countryArr := []string{}
+		// setup author keyword
+		authorKeywordArr := []string{}
 		// check nil
 		if res.Results.Affiliation != nil {
 			if afil, ok := res.Results.Affiliation.([]interface{}); !ok {
@@ -230,6 +232,21 @@ func updateAbstract() bool {
 		for _, subject := range res.Results.SubjectAreas.SubjectArea {
 			subjectAreas = append(subjectAreas, subject.Name)
 		}
+		// construct author keyword array
+		// check if it is an array
+		if kArr, ok := res.Results.AuthKeywords.AuthorKeyword.([]interface{}); ok {
+			for _, k := range kArr {
+				name := k.(map[string]interface{})["$"].(string)
+				authorKeywordArr = append(authorKeywordArr, name)
+			}
+		} else {
+			// it is an object or nil
+			if key, ok := res.Results.AuthKeywords.AuthorKeyword.(map[string]interface{}); ok {
+				name := key["$"].(string)
+				authorKeywordArr = append(authorKeywordArr, name)
+			}
+		}
+
 		// construct author name array
 		for _, author := range res.Results.Coredata.Creator.Authors {
 			name := author.PreferredName.GivenName + " " + author.PreferredName.SurName
@@ -248,13 +265,15 @@ func updateAbstract() bool {
 				Int64: citedbyCount,
 				Valid: true,
 			},
-			ContentType: res.Results.Coredata.ContentType,
-			SubjectArea: subjectAreas,
-			Publisher:   res.Results.Coredata.Publisher,
-			Language:    res.Results.Language.Value,
-			Country:     countryArr,
-			CreatedAt:   time.Now(),
-			UpdatedAt:   time.Now(),
+			ContentType:     res.Results.Coredata.ContentType,
+			SubjectArea:     subjectAreas,
+			AuthorKeyword:   authorKeywordArr,
+			Publisher:       res.Results.Coredata.Publisher,
+			PublicationName: res.Results.Coredata.PublicationName,
+			Language:        res.Results.Language.Value,
+			Country:         countryArr,
+			CreatedAt:       time.Now(),
+			UpdatedAt:       time.Now(),
 		}
 		dbErr := db.Create(&newAbstractData).Error
 		statusCode := 0

@@ -63,3 +63,7 @@ type AbstractData struct {
 func (AbstractData) TableName() string {
 	return "t_abstract_data"
 }
+
+type CachedScopusID struct {
+	ID string `gorm:"scopus_id"`
+}

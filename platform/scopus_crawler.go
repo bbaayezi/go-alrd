@@ -21,6 +21,7 @@ var (
 		"query":      secret.SearchString,
 		"field":      "affiliation,citedby-count,dc:identifier",
 		"httpAccpet": "application/json",
+		"sort":       "orig-load-date", // sort by time when adding to the system
 	}
 
 	scopusDecodeHandler c.ResponseHandler = func(r io.Reader) (interface{}, error) {

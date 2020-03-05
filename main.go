@@ -42,6 +42,7 @@ func updateScopusData() {
 	}
 	// close the db connection when exit
 	defer db.Close()
+
 	var scopusRecord sqlutil.ScopusRecord
 	db.First(&scopusRecord)
 
@@ -54,6 +55,115 @@ func updateScopusData() {
 		// log.Fatal(err)
 		return
 	}
+
+	// get cached count
+	var cachedCount int64
+	db.Table("t_abstract_retrieve").Count(&cachedCount)
+	fmt.Println("Cached Count: ", cachedCount)
+	// compare cachedCount with retrieved count
+	targetCount, _ := peekRes.Results.TotalPapers.Int64()
+	if targetCount > cachedCount {
+		fmt.Printf("%d new articles detected.\n", targetCount-cachedCount)
+		// get all cached Scopus_ID
+		var cachedIDs []string
+		// Pluck() extracts scopus_id column and stores them into cachedIDs
+		db.Model(&sqlutil.AbstractRetrieve{}).Pluck("scopus_id", &cachedIDs)
+		// initilize abstract search wait list to store urls
+		var abstractWaitList []sqlutil.AbstractRetrieve
+		// start scopus search from page 0
+		searchIndex := 0
+		for {
+			// loop
+			res, err := platform.CrawlScopusAPI(scopusCtx, searchIndex)
+			if err != nil {
+				fmt.Println("---- Error occured for current scopus search. Recording result and skip")
+				// skip current iteration
+				// update search result database
+				statusCode := 0
+				switch err.(type) {
+				case *crawler.ErrorServer:
+					statusCode = http.StatusInternalServerError
+				case *crawler.ErrorReponseHandler:
+					statusCode = -1
+				default:
+					statusCode = 0
+				}
+				newResult := sqlutil.SearchResult{
+					ID: sql.NullInt64{
+						Int64: int64(searchIndex),
+						Valid: true,
+					},
+					Type: "SCOPUS",
+					StatusCode: sql.NullInt64{
+						Int64: int64(statusCode),
+						Valid: true,
+					},
+					URL: scopusURL,
+				}
+				// add in database
+				db.Create(&newResult)
+				continue
+			} else {
+				// update search result database
+				newResult := sqlutil.SearchResult{
+					ID: sql.NullInt64{
+						Int64: int64(searchIndex),
+						Valid: true,
+					},
+					Type: "SCOPUS",
+					StatusCode: sql.NullInt64{
+						Int64: int64(http.StatusOK),
+						Valid: true,
+					},
+					URL: scopusURL,
+				}
+				// add in database
+				db.Create(&newResult)
+				// iterate through scopus response entries
+				for _, entry := range res.Results.Entry {
+					id := entry.Identifier
+					// check if this id is in the cached ID slice
+					if !util.StringInSlice(id, cachedIDs) {
+						// fmt.Println("New article found! ID is: ", id)
+						// not in cached slice, add it to wait list
+						record := sqlutil.AbstractRetrieve{
+							ID: sql.NullInt64{
+								Int64: cachedCount + int64(len(abstractWaitList)),
+								Valid: true,
+							},
+							ScopusID: id,
+							URL:      entry.AbstractURL,
+							StatusCode: sql.NullInt64{
+								Int64: 0,
+								Valid: true,
+							},
+						}
+						// update abstract retrieve table
+						db.Create(&record)
+						abstractWaitList = append(abstractWaitList, record)
+					}
+				}
+			}
+			// check if wait list is complete
+			if int64(len(abstractWaitList)) == targetCount-cachedCount {
+				fmt.Println("abstractWaitList is complete.")
+				// break the loop
+				break
+			} else {
+				// add up search index, start next loop
+				searchIndex += itemPerPage
+				fmt.Println("Starting next search round with search index: ", searchIndex)
+				// prevent deadlock
+				if int64(searchIndex) > targetCount {
+					break
+				}
+			}
+		}
+	} else {
+		fmt.Println("---- All Scopus data is up to date, wait for next round")
+	}
+
+	// ---------------------------------
 	totalPapers, _ := peekRes.Results.TotalPapers.Int64()
 	// Test
 	// totalPapers = 100
@@ -63,6 +173,7 @@ func updateScopusData() {
 	if totalPapers > scopusRecord.EndIndex.Int64 {
 		fmt.Println("---- New papers detected. Updating database")
 		var targetScopusSearchTimes int
+
 		mod := int((totalPapers - scopusRecord.EndIndex.Int64) % itemPerPage)
 		if mod == 0 {
 			targetScopusSearchTimes = int((totalPapers - scopusRecord.EndIndex.Int64) / itemPerPage)

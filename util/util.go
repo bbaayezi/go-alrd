@@ -36,3 +36,12 @@ func RemoveDuplicates(elements []string) []string {
 	}
 	return result
 }
+
+func StringInSlice(str string, slice []string) bool {
+	for _, b := range slice {
+		if b == str {
+			return true
+		}
+	}
+	return false
+}

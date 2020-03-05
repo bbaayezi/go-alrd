@@ -43,9 +43,6 @@ func updateScopusData() {
 	// close the db connection when exit
 	defer db.Close()
 
-	var scopusRecord sqlutil.ScopusRecord
-	db.First(&scopusRecord)
-
 	// send one request to get meta data
 	peekRes, err := platform.CrawlScopusAPI(scopusCtx, 0)
 	if err != nil {
@@ -69,7 +66,7 @@ func updateScopusData() {
 		// Pluck() extracts scopus_id column and stores them into cachedIDs
 		db.Model(&sqlutil.AbstractRetrieve{}).Pluck("scopus_id", &cachedIDs)
 		// initilize abstract search wait list to store urls
-		var abstractWaitList []sqlutil.AbstractRetrieve
+		finishedSearchCount := 0
 		// start scopus search from page 0
 		searchIndex := 0
 		for {
@@ -124,11 +121,11 @@ func updateScopusData() {
 					id := entry.Identifier
 					// check if this id is in the cached ID slice
 					if !util.StringInSlice(id, cachedIDs) {
-						// fmt.Println("New article found! ID is: ", id)
+						fmt.Println("New article found! ID : ", id)
 						// not in cached slice, add it to wait list
 						record := sqlutil.AbstractRetrieve{
 							ID: sql.NullInt64{
-								Int64: cachedCount + int64(len(abstractWaitList)),
+								Int64: cachedCount + int64(finishedSearchCount),
 								Valid: true,
 							},
 							ScopusID: id,
@@ -140,12 +137,12 @@ func updateScopusData() {
 						}
 						// update abstract retrieve table
 						db.Create(&record)
-						abstractWaitList = append(abstractWaitList, record)
+						finishedSearchCount++
 					}
 				}
 			}
 			// check if wait list is complete
-			if int64(len(abstractWaitList)) == targetCount-cachedCount {
+			if int64(finishedSearchCount) == targetCount-cachedCount {
 				fmt.Println("abstractWaitList is complete.")
 				// break the loop
 				break
@@ -155,6 +152,7 @@ func updateScopusData() {
 				fmt.Println("Starting next search round with search index: ", searchIndex)
 				// prevent deadlock
 				if int64(searchIndex) > targetCount {
+					fmt.Println("Breaking to prevent deadlock...")
 					break
 				}
 			}

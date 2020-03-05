@@ -21,17 +21,6 @@ func (SearchResult) TableName() string {
 	return "t_search_result"
 }
 
-type ScopusRecord struct {
-	StartIndex sql.NullInt64 `gorm:"column:start_index"`
-	EndIndex   sql.NullInt64 `gorm:"column:end_index"`
-	CreatedAt  time.Time     `gorm:"column:created_at"`
-	UpdatedAt  time.Time     `gorm:"column:updated_at"`
-}
-
-func (ScopusRecord) TableName() string {
-	return "t_scopus_search_record"
-}
-
 type AbstractRetrieve struct {
 	ID         sql.NullInt64 `gorm:"PRIMARY_KEY;column:id"`
 	ScopusID   string        `gorm:"column:scopus_id"`
@@ -62,8 +51,4 @@ type AbstractData struct {
 
 func (AbstractData) TableName() string {
 	return "t_abstract_data"
-}
-
-type CachedScopusID struct {
-	ID string `gorm:"scopus_id"`
 }

@@ -10,6 +10,7 @@ import (
 	sqlutil "go-alrd/sql"
 	"go-alrd/util"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/jinzhu/gorm"
@@ -34,7 +35,16 @@ func updateScopusData() {
 	defer scopusCancel()
 	fmt.Println("Checking for latest scopus data...")
 	// config database
-	db, err := gorm.Open("postgres", secret.DBString)
+	// get db host from environment variable
+	dbHost := os.Getenv("ALRD_DB_HOST")
+	dbPort := os.Getenv("ALRD_DB_PORT")
+	dbUser := os.Getenv("ALRD_DB_USER")
+	dbName := os.Getenv("ALRD_DB_NAME")
+	dbPassword := os.Getenv("ALRD_DB_PASSWORD")
+	dbSSLMode := os.Getenv("ALRD_DB_SSLMODE")
+	db, err := gorm.Open("postgres",
+		fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s sslmode=%s",
+			dbHost, dbPort, dbUser, dbName, dbPassword, dbSSLMode))
 	if err != nil {
 		// log.Fatal(err)
 		fmt.Println("---- Error connecting database: ", err, ", returning")

@@ -30,29 +30,10 @@ func main() {
 	checkForUpdate()
 }
 
-func updateScopusData() {
+func updateScopusData(db *gorm.DB) {
 	scopusCtx, scopusCancel := context.WithCancel(context.Background())
 	defer scopusCancel()
 	fmt.Println("Checking for latest scopus data...")
-	// config database
-	// get db host from environment variable
-	dbHost := os.Getenv("ALRD_DB_HOST")
-	dbPort := os.Getenv("ALRD_DB_PORT")
-	dbUser := os.Getenv("ALRD_DB_USER")
-	dbName := os.Getenv("ALRD_DB_NAME")
-	dbPassword := os.Getenv("ALRD_DB_PASSWORD")
-	dbSSLMode := os.Getenv("ALRD_DB_SSLMODE")
-	db, err := gorm.Open("postgres",
-		fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s sslmode=%s",
-			dbHost, dbPort, dbUser, dbName, dbPassword, dbSSLMode))
-	if err != nil {
-		// log.Fatal(err)
-		fmt.Println("---- Error connecting database: ", err, ", returning")
-		return
-	}
-	// close the db connection when exit
-	defer db.Close()
-
 	// send one request to get meta data
 	peekRes, err := platform.CrawlScopusAPI(scopusCtx, 0)
 	if err != nil {
@@ -174,20 +155,10 @@ func updateScopusData() {
 
 // updateAbstract will find 100 records with status code 0 from the db
 // and update abtract data. if no records found, return
-func updateAbstract() bool {
+func updateAbstract(db *gorm.DB) bool {
 	abstractCtx, abstractCancel := context.WithCancel(context.Background())
 	defer abstractCancel()
 	fmt.Println("Checking for latest abstract data...")
-	// config database
-	db, err := gorm.Open("postgres", secret.DBString)
-	if err != nil {
-		// log.Fatal(err)
-		fmt.Println("---- Error connecting database: ", err, ", returning")
-		// skip this round
-		return true
-	}
-	// close the db connection when exit
-	defer db.Close()
 	// test db
 	freeAbstractRetrieve := []sqlutil.AbstractRetrieve{}
 	db.Limit(100).Where("status_code = ?", sql.NullInt64{
@@ -308,12 +279,30 @@ func updateAbstract() bool {
 }
 
 func checkForUpdate() {
+	// config database
+	// get db host from environment variable
+	dbHost := os.Getenv("ALRD_DB_HOST")
+	dbPort := os.Getenv("ALRD_DB_PORT")
+	dbUser := os.Getenv("ALRD_DB_USER")
+	dbName := os.Getenv("ALRD_DB_NAME")
+	dbPassword := os.Getenv("ALRD_DB_PASSWORD")
+	dbSSLMode := os.Getenv("ALRD_DB_SSLMODE")
+	db, err := gorm.Open("postgres",
+		fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s sslmode=%s",
+			dbHost, dbPort, dbUser, dbName, dbPassword, dbSSLMode))
+	if err != nil {
+		// log.Fatal(err)
+		fmt.Println("---- Error connecting database: ", err, ", returning")
+		return
+	}
+	// close the db connection when exit
+	defer db.Close()
 	for {
 		// first check scopus data
-		updateScopusData()
+		updateScopusData(db)
 		// than update abstract data until there is no retrievable record
 		for {
-			if ok := updateAbstract(); !ok {
+			if ok := updateAbstract(db); !ok {
 				// wait for a sec to start next round of updating
 				fmt.Println("Wait for 10 seconds to start next abstract retrieve round :)")
 				time.Sleep(10 * time.Second)
